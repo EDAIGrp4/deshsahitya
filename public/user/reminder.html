@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        #reminder {
+            display: none;
+            background-color: #e90303;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button onclick="setReminder()">Set Reminder</button>
+    <div id="reminder">
+        <p>Your library book is due today!</p>
+    </div>
+    <script>
+        function setReminder() {
+            const reminder = document.getElementById('reminder');
+            reminder.style.display = 'block';
+
+            setTimeout(() => {
+                reminder.style.display = 'none';
+            }, 5000); // Hide the reminder after 5 seconds
+        }
+    </script>
+</body>
+</html>

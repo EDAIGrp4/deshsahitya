@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Book Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .history {
+            margin-top: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .logout-button {
+            background-color: #dc3545;
+            margin-left: 10px;
+        }
+
+        .logout-button:hover {
+            background-color: #a22d38;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Library Book Management</h1>
+        <div class="history">
+            <h2>Book History</h2>
+            <ul>
+                <li>Book 1 - Borrowed on 2023-01-15</li>
+                <li>Book 2 - Borrowed on 2023-02-20</li>
+                <li>Book 3 - Borrowed on 2023-03-25</li>
+            </ul>
+        </div>
+        <div class="button-container">
+            <button class="button" id="loginButton">Login</button>
+            <button class="button logout-button hidden" id="logoutButton">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        const loginButton = document.getElementById("loginButton");
+        const logoutButton = document.getElementById("logoutButton");
+
+        loginButton.addEventListener("click", () => {
+            loginButton.classList.add("hidden");
+            logoutButton.classList.remove("hidden");
+            document.querySelector(".history").style.display = "block";
+        });
+
+        logoutButton.addEventListener("click", () => {
+            logoutButton.classList.add("hidden");
+            loginButton.classList.remove("hidden");
+            document.querySelector(".history").style.display = "none";
+        });
+    </script>
+</body>
+</html>

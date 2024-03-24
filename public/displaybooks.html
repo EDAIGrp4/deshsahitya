@@ -1,0 +1,310 @@
+<!-- public/availablebooks_user.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url('/images/homebg4.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Fixed background while scrolling */
+        }
+
+
+        h1 {
+            text-align: center;
+        }
+
+        /* Navigation bar styles */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            overflow-x: auto;
+            /* Enable horizontal scrolling */
+            white-space: nowrap;
+            /* Prevent items from wrapping */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(255, 253, 247);
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+
+        nav a {
+            display: flex;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            flex-direction: row;
+            align-items: center;
+            padding: 10px;
+            margin: 8px 40px;
+            /* margin-right: 850px;  */
+
+
+        }
+
+        nav a:hover {
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+        }
+
+        #logo {
+            margin: 10px;
+        }
+
+        #logo img:hover {
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+        }
+
+        #logo img {
+            height: 110px;
+            margin: 3px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Search box styles */
+        .search-box {
+            text-align: right;
+            margin-top: 2px;
+            margin-right: 30px;
+
+        }
+
+        .search-box input {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            margin: 0px;
+            width: 200px;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .search-box input:focus {
+            width: 250px;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 98%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 150px;
+        }
+
+        th,
+        td {
+            /* border: 1px solid ; */
+            padding: 8px;
+            text-align: left;
+            border-radius: 10px;
+        }
+
+        th {
+            color: rgb(0, 0, 0);
+            background-color: rgba(186, 124, 0, 0);
+            /* Transparent blue color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+            /* Black shadow */
+            padding: 8px;
+            /* Add padding to th elements */
+            text-align: center;
+
+
+        }
+
+        tbody td {
+            color: #000;
+            /* Dark font color */
+            font-weight: bold;
+            /* Bold font */
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        }
+
+        tbody {
+            background-color: rgba(186, 124, 0, 0);
+            /* Transparent orange color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+            /* Black shadow */
+        }
+
+        /* Button styles */
+        .request-button {
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            margin-left: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: rgba(0, 139, 186, 0);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .request-button:hover {
+            background-color: rgba(0, 86, 132, 0);
+            /* Fully transparent hover color */
+            box-shadow: 0 0 15px 5px black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav>
+        <div id="logo">
+            <img src="/images/newlogo.png" alt="LibraryBooks.com">
+
+        </div>
+
+        <a href="/home.html"><strong>Home</strong></a>
+        <!-- <a href="/displaybooks.html"><strong>Request Books</strong></a> -->
+        <a href="/mybooks.html"><strong>My Books</strong></a>
+        <a href="/profile.html"><strong>Profile</strong></a>
+        <a href="/user/faqs.html"><strong>FAQs Panel</strong></a>
+        <a href="/login.html"><strong>Log Out</strong></a>
+
+
+        <!-- Search box -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search..." oninput="searchBooks()">
+        </div>
+    </nav>
+
+    <h1>Available Books</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="bookList">
+            <!-- Book data will be dynamically added here -->
+        </tbody>
+    </table>
+
+
+
+    <script>
+        async function fetchAvailableBooks() {
+            try {
+                const response = await fetch('/public/fetchAvailableBooks');
+                const data = await response.json();
+                displayBooks(data);
+            } catch (error) {
+                console.error('Error fetching available books:', error);
+            }
+        }
+
+        function displayBooks(books) {
+            const bookList = document.getElementById('bookList');
+
+            // Clear the existing content
+            bookList.innerHTML = '';
+
+            // Iterate through books and append them to the table
+            books.forEach((book, index) => {
+                const row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${book.title}</td>
+                    <td>${book.author}</td>
+                    <td>${book.isbn}</td>
+                    <td><button class="request-button" onclick="requestBook('${book._id}')">Request Book</button></td>
+                </tr>`;
+                bookList.innerHTML += row;
+            });
+        }
+
+        async function requestBook(bookId) {
+            // Prompt for user details
+            const userName = prompt('Enter your name:');
+            const userPRN = prompt('Enter your PRN:');
+            const userEmail = prompt('Enter your email:');
+
+            // Check if the user provided all the required information
+            if (userName && userPRN && userEmail) {
+                try {
+                    const response = await fetch(`/user/requestBook/${bookId}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            name: userName,
+                            prn: userPRN,
+                            email: userEmail,
+                        }),
+                    });
+
+                    const data = await response.json();
+                    alert(data.message);
+
+                    // Redirect to requestedbooks.html after making a request
+                    // window.location.href = '/requestedbooks.html';
+                } catch (error) {
+                    console.error('Error requesting book:', error);
+                }
+            } else {
+                alert('Please provide all the required information.');
+            }
+        }
+        function searchBooks() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.toLowerCase();
+            const allRows = document.querySelectorAll('#bookList tr');
+
+            allRows.forEach(row => {
+                const title = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const author = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                const isbn = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+
+                if (title.includes(searchTerm) || author.includes(searchTerm) || isbn.includes(searchTerm)) {
+                    row.style.display = ''; // Show the row if it matches the search
+                } else {
+                    row.style.display = 'none'; // Hide the row if it doesn't match the search
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchAvailableBooks();
+        });
+
+    </script>
+
+    <!-- ... (existing code) -->
+
+
+    <!-- ... (existing code) -->
+
+</body>
+
+</html>

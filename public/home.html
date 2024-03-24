@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home</title>
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: rgba(0, 140, 186, 0.7) url("/images/homebg4.webp") center bottom no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .content-boxes {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 50px;
+            margin-top: 180px;
+            padding-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(0, 140, 186, 0);
+            color: white;
+            text-align: left;
+            padding: 30px;
+            margin: 30px;
+            border-radius: 20px;
+            width: 70%; /* Adjusted width for better responsiveness */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px 5px black;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .box a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .box:hover {
+            box-shadow: 0 0 15px 5px black;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(255, 253, 247);
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        nav h1 {
+            color: #000000;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            border-radius: 30px;
+            padding: 10px;
+            margin: 0; /* Remove margin for better alignment */
+        }
+
+        nav #logo:hover img {
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+        }
+
+        nav h1:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        nav a {
+            display: flex;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            flex-direction: row;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-radius: 30px;
+            margin: 8px 40px; /* Adjusted margin for better spacing */
+        }
+
+        nav a img {
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        nav a:hover {
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+        }
+
+        #logo {
+            margin: 10px;
+        }
+
+        #logo img {
+            height: 110px; /* Adjusted height for better responsiveness */
+            margin: 3px;
+            transition: transform 0.3s ease;
+        }
+
+        .box p {
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .box .image-container {
+            display: flex;
+            flex-direction: column; /* Adjusted to column for better stacking on smaller screens */
+            justify-content: space-between;
+            margin: 20px auto; /* Adjusted margin for better spacing */
+            padding: 20px;
+            height: auto; /* Adjusted to auto for better responsiveness */
+        }
+
+        .box img {
+            max-width: 70%; /* Ensure images don't overflow their containers */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px;
+            margin-bottom: 20px; /* Adjusted margin for better spacing */
+            margin: 20px auto;
+        }
+
+        .box button {
+            background-color: rgba(0, 139, 186, 0);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+            width: 50%; /* Adjusted width for better responsiveness */
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 10px auto; /* Adjusted margin for better spacing */
+            cursor: pointer;
+            border-radius: 30px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .box button:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        @media screen and (max-width: 768px) {
+            .box {
+                width: 90%; /* Adjusted width for better responsiveness on smaller screens */
+            }
+
+            nav a {
+                margin: 10px; /* Adjusted margin for better spacing on smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div id="logo">
+            <img src="/images/newlogo.jpg" alt="LibraryBooks.com">
+        </div>
+        <h1>Welcome to DESH library!!!</h1>
+        <div class="myProfile">
+            <a href="/profile.html">
+                <img src="/images/profile.png" alt="Profile Icon">
+                <strong>My Profile</strong>
+            </a>
+            <a href="/login.html">
+                <img src="/images/log-out.png" alt="Logout Icon">
+                <strong>Logout</strong>
+            </a>
+        </div>
+    </nav>
+
+    <div class="content-boxes">
+
+        <div class="box">
+            <button>
+                <a href="/home.html">Home</a>
+            </button>
+            <p>Explore the vast realm of literature at DESH Library, where a carefully curated collection awaits your
+                discovery. Immerse yourself in the latest literary treasures, effortlessly manage your reading
+                preferences, and tailor your profile to reflect your unique reading journey. Whether you're a seasoned
+                book enthusiast or a newcomer to the world of stories, our comprehensive FAQ's Panel stands ready to
+                guide you through every aspect of your library experience. Welcome to DESH Library, where the blend of
+                literature and style creates an enriching and elegant reading atmosphere.</p>
+            <div class="image-container">
+                <!-- <img src="/images/homebox1.jpg" alt=""> -->
+                <img src="/images/homebox2.png" alt="">
+            </div>
+        </div>
+
+        <div class="box">
+            <button>
+                <a href="/displaybooks.html">Available Books</a>
+            </button>
+            <p>Embark on a literary journey within our "Available Books" section, where a diverse collection awaits your exploration. Easily navigate through titles, authors, and ISBNs, utilizing our user-friendly search box for a swift and seamless book discovery. Request your preferred books effortlessly, enhancing your reading experience at DESH Library, where accessibility converges with the joy of reading. Elevate your literary adventures and dive into a world where books are readily accessible, ensuring a delightful and fulfilling reading experience. Happy reading awaits you at DESH Library!</p>
+            <div class="image-container">
+                <img src="/images/homebox3.png" alt="">
+            </div>
+        </div>
+
+        <div class="box">
+            <button>
+                <a href="/mybooks.html">Requested Books</a>
+            </button>
+            <p>Dive into the world of your requested books on our "Requested Books" page. Track your book requests,
+                check their current status, and stay updated on approvals or rejections. The user-friendly interface
+                allows you to effortlessly search and filter your requested books. Whether it's an approved delight or a
+                status update, manage your reading journey seamlessly at DESH Library. Happy reading!</p>
+            <div class="image-container">
+                <img src="/images/homebox5.png" alt="">
+            </div>
+        </div>
+
+        <div class="box">
+            <button>
+                <a href="/user/faqs.html">FAQ's Panel</a>
+            </button>
+            <p>Dive into our "FAQs Panel" to find quick answers to common questions about our library book management
+                app. Learn about borrowing procedures, maximum book limits, loan durations, and more. Simplify your
+                library experience with helpful insights provided in this section.</p>
+            <div class="image-container">
+                <img src="/images/homebox4.png" alt="">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

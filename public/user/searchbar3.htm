@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .search-box {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-results {
+            display: none;
+            width: 300px;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            z-index: 1;
+        }
+
+        .search-results ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .search-results li {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .search-results li:hover {
+            background-color: #f2f2f2;
+        }
+
+        .search-results.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" class="search-box" id="book-search" placeholder="Enter book name">
+        <div class="search-results" id="search-results">
+            <ul>
+                <li>Book 1</li>
+                <li>Book 2</li>
+                <li>Book 3</li>
+                <li>Book 4</li>
+                <li>Book 5</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const searchBox = document.getElementById('book-search');
+        const searchResults = document.getElementById('search-results');
+
+        searchBox.addEventListener('input', function () {
+            const query = searchBox.value.toLowerCase();
+            const results = searchResults.querySelectorAll('li');
+
+            results.forEach(function (result) {
+                const bookName = result.innerText.toLowerCase();
+                if (bookName.includes(query)) {
+                    result.style.display = 'block';
+                } else {
+                    result.style.display = 'none';
+                }
+            });
+
+            if (query === '') {
+                searchResults.classList.remove('show');
+            } else {
+                searchResults.classList.add('show');
+            }
+        });
+
+        searchResults.addEventListener('click', function (e) {
+            if (e.target.tagName === 'LI') {
+                searchBox.value = e.target.innerText;
+                searchResults.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

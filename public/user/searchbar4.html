@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .search-container {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: dodgerblue;
+        }
+
+        .recommendations {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .search-input:focus + .recommendations {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .recommendation-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .recommendation-item:last-child {
+            border-bottom: none;
+        }
+
+        .recommendation-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search...">
+        <div class="recommendations">
+            <div class="recommendation-item">Recommendation 1</div>
+            <div class="recommendation-item">Recommendation 2</div>
+            <div class="recommendation-item">Recommendation 3</div>
+        </div>
+    </div>
+</body>
+</html>

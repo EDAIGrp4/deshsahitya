@@ -1,0 +1,108 @@
+<!-- public/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  background: url('/images/bg6.jpg') center/cover ;
+}
+
+.container {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid rgba(0, 0, 0, 0.5); /* Darker border for 3D effect */
+    border-radius: 20px;
+    padding: 50px; /* Reduced padding for better effect */
+    background-color: rgba(0, 139, 186, 0); /* Slightly opaque background for depth */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Soft shadow for elevation */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.input-box {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background-color: rgba(0, 140, 186, 0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+  border-radius: 20px;
+  padding: 10px;
+  width: 280px; /* Added width for better responsiveness */
+}
+
+.input-box:hover {
+  background-color: rgba(0, 86, 132, 0);
+  box-shadow: 0 0 15px 5px black;
+}
+
+h1 {
+  margin-bottom: 35px;
+}
+
+button {
+  background-color: rgba(0, 139, 186, 0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 0;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#loginbutton {
+  margin-left: 120px; /* Adjusted margin for better responsiveness */
+}
+
+#registerbutton {
+  margin-left: 0; /* Adjusted margin for better responsiveness */
+}
+
+button:hover {
+  background-color: rgba(0, 86, 132, 0);
+  box-shadow: 0 0 15px 5px black;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    max-width: 520px; /* Adjusted max-width for larger screens */
+  }
+}
+.container:hover{
+  background-color: rgba(0, 86, 132, 0);
+  box-shadow: 0 0 15px 5px black;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <h1>Student Login</h1>
+    <form action="/login" method="post">
+      <input type="text" id="prn" class="input-box" name="prn" placeholder="PRN" required>
+      <br>
+      <input type="password" id="password" class="input-box" name="password" required placeholder="Password">
+      <br>
+      <button type="submit" id="loginbutton">Login</button>
+    </form>
+  
+    <p>Don't have an account? <a href="/register.html"><button id="registerbutton">Register</button></a></p>
+  </div>
+</body>
+</html>

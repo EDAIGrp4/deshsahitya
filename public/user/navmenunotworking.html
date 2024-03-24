@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navmenu</title>
+</head>
+<style>
+    .navigation{
+        position : relative;
+        width: 400px;
+        height: 60px;
+        background  :white;
+        display  :flex;
+        justify-content :center;
+        align-items :center;
+        border-radius :10px;
+    }
+
+    .navigation ul{
+        width: 350px;
+        display: flex;
+    }
+
+    .navigation ul li{
+        list-style: none;
+        position: relative;
+        width: 70px;
+        height: 60px;
+        z-index: 2;
+    }
+
+    .navigation ul li a{
+        text-decoration: none;
+        color: #555;
+
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .navigation ul li a .icon {
+        position: relative;
+        background: #fff;
+        display: block;
+        width: 55px;
+        height: 55px;
+        text-align: center;
+        line-height: 65px;
+        border-radius: 65px;
+        color:#222327;
+        font-size: 1.5em;
+        transition: 0.5s;
+        transition-delay: 0s;
+    }
+</style>
+<body>
+    <div class="'navigation'">
+        <ul>
+            <li class="list active" style="--clr :#f44336"> <a href="#"> <span class="icon"> <ion-icon name="home-outline> </ion-icon>
+            </span></a>
+            
+            </li>
+            <div class="indicator"></div>
+        </ul>
+
+    </div>
+</body>
+</html>

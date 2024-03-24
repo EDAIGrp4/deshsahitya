@@ -1,0 +1,309 @@
+<!-- librariancrud.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-image: url('/images/homebg4.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      /* Fixed background while scrolling */
+    }
+
+
+    h1 {
+      text-align: center;
+    }
+
+    /* Navigation bar styles */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      overflow-x: auto;
+      /* Enable horizontal scrolling */
+      white-space: nowrap;
+      /* Prevent items from wrapping */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgb(255, 253, 247);
+      padding: 10px 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+
+    nav a {
+      display: flex;
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px;
+      margin: 8px 40px;
+      /* margin-right: 850px;  */
+
+
+    }
+
+    nav a:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+
+    #logo {
+      margin: 10px;
+    }
+
+    #logo img:hover {
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+
+    #logo img {
+      height: 110px;
+      margin: 3px;
+      transition: transform 0.3s ease;
+    }
+
+    form {
+      margin: 20px 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+     
+    }
+
+    input {
+      width: 98%;
+      padding: 8px;
+      background-color: rgba(0, 139, 186, 0);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+      margin-bottom: 12px;
+      margin-left: 20px ;
+      /* box-sizing: border-box; */
+
+      border-radius: 10px;
+    }
+
+
+
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+
+    .addBookButton {
+      color: #45a049;
+      border: 2px solid black;
+      border-radius: 20px;
+    }
+
+
+    .button {
+      background-color: rgba(0, 139, 186, 0);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+      font-weight: bold;
+      color: rgb(0, 0, 0);
+      border: none;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      margin-left: 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .label {
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background-color: rgba(0, 86, 132, 0);
+      /* Fully transparent hover color */
+      box-shadow: 0 0 15px 5px black;
+      /* Adjusted shadow on hover */
+    }
+
+    #bookForm {
+      margin-top: 30px;
+      padding: 50px;
+      margin-left: 20px;
+      margin-right: 20px;
+      background-color: rgba(0, 86, 132, 0);
+      /* Fully transparent hover color */
+      background-color: rgba(0, 139, 186, 0);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      transition: box-shadow 0.3s ease-in-out;
+      width: 55%;
+      
+      margin: 10px auto;
+      
+    }
+
+    #bookForm:hover {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 1);
+    }
+
+    h1 {
+      margin-top: 180px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <!-- Navigation bar -->
+  <nav>
+    <div id="logo">
+      <img src="/images/newlogo.png" alt="LibraryBooks.com">
+
+    </div>
+    <a href="/librarianhome.html"><strong>Librarian Home</strong></a>
+    <a href="/availablebooks.html"><strong>Available Books</strong></a>
+    <!-- <a href="/librariancrud.html"><strong>Add Books</strong></a> -->
+    <a href="/requestedbooks.html"><strong>Requested Books</strong></a>
+    <a href="/studentprofile.html"><strong>Student Profile</strong></a>
+    <a href="/librarian_login.html"><strong>Log Out</strong></a>
+
+  </nav>
+
+
+
+  <h1>Add Books</h1>
+  <form id="bookForm">
+    <label for="title" class="label">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="author" class="label">Author:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="isbn" class="label">ISBN:</label>
+    <input type="text" id="isbn" name="isbn" required>
+
+    <button type="button" class="button" id="addBookButton">Add Book</button>
+    <button type="button" class="button" id="clearButton">Clear</button>
+  </form>
+
+  <table>
+    <thead>
+
+    </thead>
+    <tbody id="bookList">
+      <!-- Book data will be dynamically added here -->
+    </tbody>
+  </table>
+
+  <script>
+    // Function to add a book and update the displayed book data
+    async function addBook() {
+      const title = document.getElementById('title').value;
+      const author = document.getElementById('author').value;
+      const isbn = document.getElementById('isbn').value;
+
+      const response = await fetch('http://localhost:3000/librarian/addBook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title, author, isbn }),
+      });
+
+      const data = await response.json();
+
+      // Update the displayed book data
+      fetchData();
+
+      // Display a success prompt
+      displaySuccessPrompt('Book added successfully.');
+    }
+
+    // Function to fetch data and update the displayed book data
+    async function fetchData() {
+      const response = await fetch('http://localhost:3000/public/Crud');
+      const data = await response.json();
+      displayBooks(data);
+    }
+
+    // Function to display books in the table
+    function displayBooks(books) {
+      const tbody = document.getElementById('bookTableBody');
+
+      // Clear the existing content
+      tbody.innerHTML = '';
+
+      // Iterate through books and append them to the table
+      books.forEach(book => {
+        const row = `<tr>
+          <td>${book.title}</td>
+          <td>${book.author}</td>
+          <td>${book.isbn}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+      });
+    }
+
+    // Function to display a success prompt
+    function displaySuccessPrompt(message) {
+      window.alert(message);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const addBookButton = document.getElementById('addBookButton');
+      if (addBookButton) {
+        addBookButton.addEventListener('click', addBook);
+      }
+
+      fetchData();
+    });
+    function clearFields() {
+      document.getElementById('title').value = '';
+      document.getElementById('author').value = '';
+      document.getElementById('isbn').value = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // ... (your existing event listeners) ...
+
+      const clearButton = document.getElementById('clearButton');
+      if (clearButton) {
+        clearButton.addEventListener('click', clearFields);
+      }
+    });
+  </script>
+
+</body>
+
+</html>

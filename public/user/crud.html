@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      margin: 20px 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Library Management System</h1>
+
+  <form id="bookForm">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn" required>
+
+    <button type="button" onclick="addBook()">Add Book</button>
+    <button type="button" onclick="updateBook()">Update Book</button>
+    <button type="button" onclick="deleteBook()">Delete Book</button>
+  </form>
+
+  <table id="bookTable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Book data will be displayed here -->
+    </tbody>
+  </table>
+
+  <script>
+async function fetchData() {
+    const response = await fetch('/api/books');
+    const data = await response.json();
+    displayBooks(data);
+  }
+
+  async function addBook() {
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const isbn = document.getElementById('isbn').value;
+
+    const response = await fetch('/api/books', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title, author, isbn }),
+    });
+
+    const data = await response.json();
+    fetchData();
+  }
+
+  async function updateBook() {
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const isbn = document.getElementById('isbn').value;
+
+    const bookId = updateBook;
+    
+    const response = await fetch(`/api/books/${bookId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ title, author, isbn }),
+    });
+
+    const data = await response.json();
+    fetchData();
+  }
+
+  async function deleteBook() {
+    const bookId = deleteBook;
+    
+    const response = await fetch(`/api/books/${bookId}`, {
+      method: 'DELETE',
+    });
+
+    const data = await response.json();
+    fetchData();
+  }
+
+  function displayBooks(books) {
+    const tbody = document.querySelector('tbody');
+    tbody.innerHTML = '';
+
+    books.forEach(book => {
+      const row = `<tr>
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.isbn}</td>
+      </tr>`;
+      tbody.innerHTML += row;
+    });
+  }
+
+  fetchData();
+  </script>
+</body>
+</html>

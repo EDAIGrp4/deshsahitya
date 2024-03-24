@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Data</title>
+    <style>
+        /* CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Data</h1>
+        <input type="text" id="searchInput" placeholder="Search for data">
+        <ul id="results">
+            <!-- Results will be displayed here -->
+        </ul>
+    </div>
+    
+    <script>
+        // Sample data for searching
+        const data = [
+            "book",
+            "Item 2",
+            "Item 3",
+            "Item 4",
+            "Item 5",
+            "Another Item 1",
+            "Another Item 2",
+        ];
+
+        const searchInput = document.getElementById("searchInput");
+        const resultsList = document.getElementById("results");
+
+        // Event listener for input changes
+        searchInput.addEventListener("input", function() {
+            const searchValue = searchInput.value.toLowerCase();
+            displayResults(searchValue);
+        });
+
+        // Function to filter and display results
+        function displayResults(query) {
+            resultsList.innerHTML = ""; // Clear previous results
+
+            const filteredData = data.filter(item => item.toLowerCase().includes(query));
+
+            if (filteredData.length === 0) {
+                resultsList.innerHTML = "<li>No results found</li>";
+            } else {
+                filteredData.forEach(item => {
+                    const li = document.createElement("li");
+                    li.textContent = item;
+                    resultsList.appendChild(li);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+

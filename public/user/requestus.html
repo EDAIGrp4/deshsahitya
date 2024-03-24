@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script defer>
+
+    // script.js
+    document.getElementById("sendButton").addEventListener("click", function () {
+      // Get input values
+      var recipient = document.getElementById("recipient").value;
+      var subject = document.getElementById("subject").value;
+      var message = document.getElementById("message").value;
+
+      // Use the Email.js library to send the email
+      emailjs.init("YOUR_USER_ID"); // Replace with your User ID
+
+      var templateParams = {
+        to_email: recipient,
+        subject: subject,
+        message: message
+      };
+
+      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+        .then(function (response) {
+          alert("Email sent successfully!");
+        }, function (error) {
+          console.error("Error sending email: ", error);
+        });
+    });
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .contact-box {
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      border-radius: 5px;
+      max-width: 400px;
+      width: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-box:hover {
+      transform: scale(1.05);
+    }
+
+    .contact-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .contact-form button {
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <body background="books.jpg"></body>
+  <div class="contact-box">
+    <h2>Contact Us</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Phone Number">
+      <textarea placeholder="Message" rows="4"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+
+</html>

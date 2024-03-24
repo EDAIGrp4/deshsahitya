@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Type Selection</title>
+  <style>
+    body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg, #2980b9, #6dd5fa);
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  margin-bottom: 12px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.animated-image {
+  max-width: 100%;
+  height: 150px; /* Set a fixed height for the images */
+  object-fit: cover; /* Use object-fit to control how the images are resized */
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  animation: scaleIn 1s ease-in-out;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- <h1>User Type Selection</h1> -->
+
+  <form id="userTypeForm">
+    <h1>User type selection</h1>
+    <div class="image-container">
+      <div>
+        <img class="animated-image" src="/images/student2.jpg" alt="Student Animation">
+        <label>
+          <input type="radio" name="userType" value="user" checked>
+          I am a User
+        </label>
+      </div>
+      <div>
+        <img class="animated-image" src="/images/librarian.jpg" alt="Librarian Animation">
+        <label>
+          <input type="radio" name="userType" value="librarian">
+          I am a Librarian
+        </label>
+      </div>
+    </div>
+
+    <button type="button" onclick="submitForm()">Submit</button>
+  </form>
+
+  <script>
+    function submitForm() {
+      const form = document.getElementById('userTypeForm');
+      const userType = form.querySelector('input[name="userType"]:checked').value;
+
+      if (userType === 'user') {
+        // Redirect to user login or registration page
+        window.location.href = '/login.html';
+      } else {
+        // Redirect to librarian login or registration page
+        window.location.href = '/librarian_login.html';
+      }
+    }
+  </script>
+</body>
+
+</html>

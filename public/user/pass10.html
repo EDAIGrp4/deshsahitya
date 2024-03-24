@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Length Validation</title>
+  <script>
+    function validatePassword() {
+      var password = document.getElementById("password").value;
+      if (password.length !== 10) {
+        alert("Password must be exactly 10 digits long.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h1>Sign Up</h1>
+  <form onsubmit="return validatePassword()">
+    <label for="password">Password (10 digits):</label>
+    <input type="password" id="password" name="password" required>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Book Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>\
+<style>
+    /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s;
+}
+
+.book-list, .add-book {
+    margin-bottom: 2rem;
+}
+
+.book-item {
+    list-style: none;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+}
+
+.book-title {
+    font-weight: bold;
+}
+
+.add-book form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 1rem;
+}
+
+input[type="text"] {
+    padding: 0.5rem;
+    margin: 0.3rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+</style>
+<body>
+    <header>
+        <h1>Library Books</h1>
+    </header>
+    <main>
+        <section class="book-list">
+            <h2>Book List</h2>
+            <ul>
+                <li class="book-item">
+                    <span class="book-title">Book Title 1</span>
+                    <span class="book-author">Author 1</span>
+                </li>
+                <li class="book-item">
+                    <span class="book-title">Book Title 2</span>
+                    <span class="book-author">Author 2</span>
+                </li>
+                <!-- Add more book items here -->
+            </ul>
+        </section>
+        <section class="add-book">
+            <h2>Add a Book</h2>
+            <form>
+                <label for="book-title">Title:</label>
+                <input type="text" id="book-title" name="book-title" required>
+                <label for="book-author">Author:</label>
+                <input type="text" id="book-author" name="book-author" required>
+                <button type="submit">Add Book</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

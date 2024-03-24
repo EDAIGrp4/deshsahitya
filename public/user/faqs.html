@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Book Management App - FAQs</title>
+    <img src="" alt="">
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-image: url('/images/homebg4.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Fixed background while scrolling */
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        /* Navigation bar styles */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            overflow-x: auto;
+            /* Enable horizontal scrolling */
+            white-space: nowrap;
+            /* Prevent items from wrapping */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(255, 253, 247);
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        nav a {
+            display: flex;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            flex-direction: row;
+            align-items: center;
+            /* padding: 10px; */
+            margin: 8px 40px;
+            
+        }
+
+        nav a:hover {
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+        }
+
+        #logo {
+            margin: 10px;
+        }
+
+        #logo img:hover {
+            transform: scale(1.2);
+            transition: transform 0.3s ease;
+        }
+
+        #logo img {
+            height: 110px;
+            margin: 3px;
+            transition: transform 0.3s ease;
+        }
+        /* Add your CSS styles here */
+        .faq-container {
+            max-width: 96.5%;
+            padding: 10px 10px;
+            margin: 0 auto;
+            background-color: rgba(0, 140, 186, 0);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            font-weight: bolder;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-top: 150px;
+          
+        }
+        .faq-item {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .faq-item h2 {
+            margin: 0;
+            cursor: pointer;
+        }
+        .faq-item p {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="logo">
+            <img src="/images/newlogo.png" alt="LibraryBooks.com">
+        </div>
+        <a href="/home.html"><strong>Home</strong></a>
+        <a href="/displaybooks.html"><strong>Request Books</strong></a>
+        <a href="/mybooks.html"><strong>My Books</strong></a>
+        <a href="/profile.html"><strong>Profile</strong></a>
+        <!-- <a href="/user/faqs.html"><strong>FAQs Panel</strong></a> -->
+        <a href="/login.html"><strong>Log Out</strong></a>
+    </nav>
+    <h1>FAQs Panel</h1>
+    <div class="faq-container">
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)">How do I borrow a book?</h4>
+            <p>You can borrow a book by visiting the library and presenting your library card at the circulation desk. The librarian will assist you in the process.</p>
+        </div>
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)">How many books can I borrow at a time?</h4>
+            <p>You can borrow up to 5 books at a time. However, this limit may vary depending on your membership type and library policies.</p>
+        </div>
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)">How long can I keep a borrowed book?</h4>
+            <p>The standard loan period for books is 3 weeks. You can renew a book if no one else has reserved it, for an additional 3 weeks.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4 onclick="toggleFAQ(this)"></h4>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(faq) {
+            const answer = faq.nextElementSibling;
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
