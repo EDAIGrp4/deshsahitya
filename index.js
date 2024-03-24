@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Set EJS as view engine
-// app.set('view engine', ejs);
+app.set('view engine', ejs);
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
