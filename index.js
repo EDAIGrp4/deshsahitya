@@ -90,6 +90,9 @@ const requireLibrarianLogin = (req, res, next) => {
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/welcome.html');
 });
+app.post('/test', async (req, res) => {
+  req.send('hi').status(200);
+});
 
 // User login
 app.get('/login', (req, res) => {
